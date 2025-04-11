@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Button } from "@/components/ui/button";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -28,15 +29,103 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
                 <header className="p-4 border-b ">
-                    <h1 className="font-bold text-xl">Next App</h1>
+                    <h1 className="font-bold text-xl flex items-center gap-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="lucide lucide-clapperboard-icon lucide-clapperboard"
+                        >
+                            <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" />
+                            <path d="m6.2 5.3 3.1 3.9" />
+                            <path d="m12.4 3.4 3.1 4" />
+                            <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+                        </svg>
+                        Next App
+                    </h1>
                 </header>
                 <div className="flex p-4">
-                    <aside className="w-[250px] pr-4 mr-4 flex flex-col">
-                        <a href="/">Home</a>
-                        <a href="/search">Search</a>
-                        <a href="/person/123">Person</a>
+                    <aside
+                        className="min-w-[250px]
+ pr-4 flex flex-col gap-1 "
+                    >
+                        <Button
+                            variant="outline"
+                            className="font-bold justify-start"
+                            asChild
+                        >
+                            <a href="/">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 15 15"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M3.24182 2.32181C3.3919 2.23132 3.5784 2.22601 3.73338 2.30781L12.7334 7.05781C12.8974 7.14436 13 7.31457 13 7.5C13 7.68543 12.8974 7.85564 12.7334 7.94219L3.73338 12.6922C3.5784 12.774 3.3919 12.7687 3.24182 12.6782C3.09175 12.5877 3 12.4252 3 12.25V2.75C3 2.57476 3.09175 2.4123 3.24182 2.32181ZM4 3.57925V11.4207L11.4288 7.5L4 3.57925Z"
+                                        fill="currentColor"
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                    ></path>
+                                </svg>
+                                Home
+                            </a>
+                        </Button>
+                        <Button
+                            variant="outline"
+                            className="font-bold justify-start"
+                            asChild
+                        >
+                            <a href="/search">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 15 15"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z"
+                                        fill="currentColor"
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                    ></path>
+                                </svg>
+                                Search
+                            </a>
+                        </Button>
+                        <Button
+                            variant="outline"
+                            className="font-bold justify-start"
+                            asChild
+                        >
+                            <a href="/person/123">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 15 15"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091 9.9883C4.91536 9.25463 6.02674 8.87499 7.49995 8.87499C8.97317 8.87499 10.0846 9.25463 10.8291 9.98831C11.5721 10.7206 12.025 11.8799 12.025 13.5999C12.025 13.8623 12.2376 14.0749 12.5 14.0749C12.7623 14.075 12.975 13.8623 12.975 13.6C12.975 11.72 12.4778 10.2794 11.4959 9.31166C10.7244 8.55135 9.70025 8.12903 8.50625 7.98352C10.0187 7.5474 11.125 6.15289 11.125 4.5C11.125 2.49797 9.50203 0.875 7.5 0.875ZM4.825 4.5C4.825 3.02264 6.02264 1.825 7.5 1.825C8.97736 1.825 10.175 3.02264 10.175 4.5C10.175 5.97736 8.97736 7.175 7.5 7.175C6.02264 7.175 4.825 5.97736 4.825 4.5Z"
+                                        fill="currentColor"
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                    ></path>
+                                </svg>
+                                Person
+                            </a>
+                        </Button>
                     </aside>
-                    <main className="p-4 flex-grow">{children}</main>
+                    <main className="pl-4 flex-grow">{children}</main>
                 </div>
             </body>
         </html>
