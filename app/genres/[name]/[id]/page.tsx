@@ -1,5 +1,4 @@
 import MovieList from "@/components/movie-list";
-
 type MovieType = {
     id: string;
     title: string;
@@ -8,11 +7,11 @@ type MovieType = {
     overview: string;
 };
 
-async function searchMovies(q: string): Promise<MovieType[]> {
+async function fetchByGenres(id: string): Promise<MovieType[]> {
     const token = process.env.TMDB_TOKEN;
 
     const res = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${q}`,
+        `https://api.themoviedb.org/3/discover/movie?with_genres=${id}`,
         {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -20,20 +19,22 @@ async function searchMovies(q: string): Promise<MovieType[]> {
         }
     );
     const data = await res.json();
-    console.log(data);
+
     return data.results;
 }
 
-export default async function Search({
-    searchParams,
+export default async function Genres({
+    params,
 }: {
-    searchParams: Promise<{ q: string }>;
+    params: Promise<{ id: string; name: string }>;
 }) {
-    const { q } = await searchParams;
-    const movies = await searchMovies(q);
+    const id = (await params).id;
+    const name = (await params).name;
+    const movies = await fetchByGenres(id);
+
     return (
         <>
-            <h2 className="pb-2 mb-4 border-b font-bold text-lg">Search:{q}</h2>
+            <h2 className="pb-2 mb-4 border-b font-bold text-lg">{name}</h2>
             <MovieList movies={movies} />
         </>
     );
