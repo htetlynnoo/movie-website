@@ -1,7 +1,6 @@
 import { PlayIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { headers } from "next/headers";
 
 type GenresType = {
     id: number;
