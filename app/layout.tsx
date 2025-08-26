@@ -65,7 +65,7 @@ export default function RootLayout({
                                     <path d="m12.4 3.4 3.1 4" />
                                     <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
                                 </svg>
-                                Next App
+                                Movie World
                             </h1>
 
                             <div className="flex gap-5">
